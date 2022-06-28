@@ -144,9 +144,14 @@ trait HasTeams
             return;
         }
 
-        $role = $team->users
+        $user = $team->users
             ->where('id', $this->id)
-            ->first()
+            ->first();
+        if (!$user)
+        {
+            return null;
+        }
+            $role = $user
             ->membership
             ->role;
 
